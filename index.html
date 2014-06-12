@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+        <meta http-equiv="Content-Type"
+              content="text/html;charset=UTF-8"> 
+              
         <title>Scary Jerry</title>
+        
+        <style>
+            body {
+                position: relative;
+            }
+            
+            canvas {
+                position: absolute;
+                background-color: transparent;
+                border: 1px solid black;
+            }
+        </style>
     </head>
-    <body style="text-align:center">
-        <canvas id="canvas" height=600 width=800>Canvas no soportado!</canvas>
+    <body>
+        <canvas id="layer1" height=600 width=800>
+            Canvas no soportado!
+        </canvas>
+        <canvas id="layer2" height=600 width=800></canvas>
+        <canvas id="layer3" height=600 width=800></canvas>
+        
         <script src="main.js"></script>
     </body>
 </html>
