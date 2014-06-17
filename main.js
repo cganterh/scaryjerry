@@ -3,7 +3,6 @@ var entities      = document.getElementById("entities");
 var hills         = document.getElementById("hills");
 var hill_entities = document.getElementById("hill-entities");
 var shadows       = document.getElementById("shadows");
-var jerry         = document.getElementById("jerry");
 
 var board = {
     block: {width: 50, height: 50},
