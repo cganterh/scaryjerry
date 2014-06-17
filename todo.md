@@ -2,6 +2,7 @@ To do
 =====
 
 1.  (cristobal) Hacer que jerry se mueva suavemente.
+2.  Agregar música.
 2.  Crear funciones para modificar el mapa.
     2.1.    Rectángulo.
     2.2.    Linea.
