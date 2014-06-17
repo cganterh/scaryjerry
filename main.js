@@ -1,17 +1,54 @@
-var layer1 = document.getElementById("layer1");
-var l1ctx = layer1.getContext('2d');
+var ground        = document.getElementById("ground");
+var entities      = document.getElementById("entities");
+var hills         = document.getElementById("hills");
+var hill_entities = document.getElementById("hill-entities");
+var shadows       = document.getElementById("shadows");
+var jerry         = document.getElementById("jerry");
 
-var layer2 = document.getElementById("layer2");
-var l2ctx = layer2.getContext('2d');
+var board = {
+    block: {width: 50, height: 50},
+    width: 800.0/50.0,
+    height: 600.0/50.0,
+    blocks: [],
+}
 
-var layer3 = document.getElementById("layer3");
-var l3ctx = layer3.getContext('2d');
+for (x=0; x < board.width; x++) {
+    board.blocks[x] = [];
+}
 
-l1ctx.fillStyle = "#FF0000";
-l1ctx.fillRect(0,0,150,150);
+function Block(x, y, layer, type) {
+    this.x = x;
+    this.y = y;
+    this.layer = layer;
+    this.type = type;
+    this.image = document.getElementById(this.type).cloneNode(true);
+    
+    this.image.id = "";
+    this.image.setAttribute("x", board.block.width*this.x+"px");
+    this.image.setAttribute("y", board.block.height*this.y+"px");
+    layer.appendChild(this.image);
+}
 
-l2ctx.fillStyle = "#00FF00";
-l2ctx.fillRect(100,100,260,110);
-
-l3ctx.fillStyle = "#0000FF";
-l3ctx.fillRect(200,200,370,120);
+function move(event) {
+    switch(event.keyCode) {
+        case 37:
+            var x = jerry.getAttribute("x");
+            jerry.setAttribute("x", +x-50);
+            break;
+            
+        case 38:
+            var y = jerry.getAttribute("y");
+            jerry.setAttribute("y", +y-50);
+            break;
+            
+        case 39:
+            var x = jerry.getAttribute("x");
+            jerry.setAttribute("x", +x+50);
+            break;
+            
+        case 40:
+            var y = jerry.getAttribute("y");
+            jerry.setAttribute("y", +y+50);
+            break;
+    }
+}

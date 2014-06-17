@@ -8,23 +8,58 @@
         
         <style>
             body {
-                position: relative;
+                text-align: center;
             }
             
-            canvas {
-                position: absolute;
-                background-color: transparent;
-                border: 1px solid black;
+            #images {
+                display: none;
+            }
+            
+            #jerry {
+                transition: x 0.5s;
             }
         </style>
     </head>
-    <body>
-        <canvas id="layer1" height=600 width=800>
-            Canvas no soportado!
-        </canvas>
-        <canvas id="layer2" height=600 width=800></canvas>
-        <canvas id="layer3" height=600 width=800></canvas>
+    <body onKeyDown="move(event)">
+        <svg id="images">
+            <image id="forest" xlink:href="art/forest.png"
+                   width="50px" height="50px" />
+                   
+            <image id="gem"    xlink:href="art/gem.png"
+                   width="50px" height="50px" />
+                   
+            <image id="grass"  xlink:href="art/grass.png"
+                   width="50px" height="50px" />
+                   
+            <image id="hills"  xlink:href="art/hills.png"
+                   width="50px" height="69px" />
+                   
+            <image id="lava"   xlink:href="art/lava.png"
+                   width="50px" height="50px" />
+                   
+            <image id="shadow" xlink:href="art/shadow.png"
+                   width="50px" height="50px" />
+                   
+            <image id="spider" xlink:href="art/spider.png"
+                   width="50px" height="50px" />
+                   
+            <image id="water"  xlink:href="art/water.png"
+                   width="50px" height="50px" />
+        </svg>
         
+        <svg id="game" width="800" height="600">
+            <g id="ground"></g>
+            
+            <g id="entities">
+                <image id="jerry" xlink:href="art/jerry.png"
+                       width="50px" height="50px">
+            </g>
+            
+            <g id="hills"></g>
+            <g id="hill-entities"></g>
+            <g id="shadows"></g>
+        </svg>
         <script src="main.js"></script>
+        <script src="map.js"></script>
     </body>
 </html>
