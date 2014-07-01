@@ -10,7 +10,7 @@ To do
     c.  Círculo.
 
 5.  Diseñar uno o dos mapas nuevos.
-6.  Crear una burbuja de mensaje para que lerry diga cosas.
+6.  (Juan) Crear una burbuja de mensaje para que Jerry diga cosas.
 7.  Hacer que Jerry reaccione a sus miedos.
 8.  Crear un cuadro de diálogos.
 9.  Derrotas
