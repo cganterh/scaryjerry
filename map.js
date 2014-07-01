@@ -3,3 +3,5 @@ for (x=0; x < board.width; x++) {
         board.blocks[x][y] = new Block(x, y, ground, "grass");
     }
 }
+
+jerry.set_pos(0, 0);

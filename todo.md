@@ -1,7 +1,7 @@
 To do
 =====
 
-1.  (cristobal) Hacer que jerry se mueva suavemente.
+1.  ~~Hacer que jerry se mueva suavemente.~~
 2.  Hacer que jerry no pueda salir del mapa.
 3.  Agregar música.
 4.  Crear funciones para modificar el mapa.
