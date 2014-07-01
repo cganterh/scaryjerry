@@ -9,7 +9,7 @@ To do
     2.3.    Círculo.
 3.  Diseñar uno o dos mapas nuevos.
 4.  Crear una burbuja de mensaje para que lerry diga cosas.
-5.  Hacer que Jerry reaccione a sus miedos.
+5.  (Nacho) Hacer que Jerry reaccione a sus miedos.
 6.  Crear un cuadro de diálogos.
 7.  Derrotas
 8.  Hacer que en el cuadro de diálogos se puedan seleccionar opciones.
