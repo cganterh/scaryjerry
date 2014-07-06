@@ -2,7 +2,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type"
-              content="text/html;charset=UTF-8"> 
+              content="text/html;charset=UTF-8">
+              
+        <link href="switch.css" type="text/css" rel="stylesheet">
               
         <title>Scary Jerry</title>
         
@@ -16,10 +18,31 @@
             }
             #draw {
                 display: none;
+            #mute {
+                float: left;
+            }
+            
+            #game {
+                background-color: green;
             }
         </style>
     </head>
     <body onKeyDown="jerry.move(event)">
+        <audio id="music" autoplay loop>
+            <source src="music/Ptibec_-_Medieval.mp3"
+                    type="audio/mp3">
+        </audio>
+        
+        <div id="mute" class="onoffswitch">
+            <input type="checkbox" name="mute-switch"
+                   class="onoffswitch-checkbox" id="mute-switch"
+                   checked onClick="mute()">
+            <label class="onoffswitch-label" for="mute-switch">
+                <span class="onoffswitch-inner"></span>
+                <span class="onoffswitch-switch"></span>
+            </label>
+        </div>
+        
         <svg id="images">
             <image id="forest" xlink:href="art/forest.png"
                    width="50px" height="50px" />
@@ -83,10 +106,10 @@
         <script src="helpers.js"></script>
         <script src="block.js"></script>
         <script src="board.js"></script>
-		<script src="map_functions.js"></script>
+	<script src="map_functions.js"></script>
         <script src="jerry.js"></script>
         <script src="map.js"></script>
-        <script src="map.js"></script>
         <script src="message.js"></script>
+        <script src="music.js"></script>
     </body>
 </html>
