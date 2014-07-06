@@ -3,12 +3,12 @@ se calcula la posición del globo y la consecuente flecha que tendrá.
 de acuerdo a la posición del globo y la flecha correspondiente es que
 se calcula la posición de la flecha.
 */
-var message_blocks = {
-	cloud:new Block(0,0,l_message_cloud,"cloud"),
-	cloud_right_arrow:new Block(0,0,l_message_cloud,"cloud-right-arrow"),
-	cloud_left_arrow:new Block(0,0,l_message_cloud,"cloud-left-arrow"),
-	cloud_right_up_arrow:new Block(0,0,l_message_cloud,"cloud-right-up-arrow"),
-	cloud_left_up_arrow:new Block(0,0,l_message_cloud,"cloud-left-up-arrow"),
+var message_draw = {
+	cloud:new draw(l_message_cloud,"cloud"),
+	cloud_right_arrow:new draw(l_message_cloud,"cloud-right-arrow"),
+	cloud_left_arrow:new draw(l_message_cloud,"cloud-left-arrow"),
+	cloud_right_up_arrow:new draw(l_message_cloud,"cloud-right-up-arrow"),
+	cloud_left_up_arrow:new draw(l_message_cloud,"cloud-left-up-arrow"),
 	// se invoca a setx con la posición x que deberá tener la esquina superior derecha del globo del mensaje,
 	// dentro de setx() se calcula la posición de los demás elementos en relación a ese valor de x
 	setx: function (x) {
@@ -46,36 +46,36 @@ function message(current_message){
 	// Jerry en esquina superior derecha
 	if(jerry_y<board.block.height*3){
 		if(jerry_x<board.block.width*2){
-			message_blocks.setx(jerry_x);
-		    message_blocks.sety(jerry_y + board.block.height*2);
-			message_blocks.cloud.image.setAttribute("visibility","visible");
-			message_blocks.cloud_left_up_arrow.image.setAttribute("visibility","visible");
+			message_draw.setx(jerry_x);
+		    message_draw.sety(jerry_y + board.block.height*2);
+			message_draw.cloud.image.setAttribute("visibility","visible");
+			message_draw.cloud_left_up_arrow.image.setAttribute("visibility","visible");
 		}else{ // Jerry en la parte superior de la pantalla
-			message_blocks.setx(jerry_x-board.block.width*2);
-		    message_blocks.sety(jerry_y+board.block.height*2);
-			message_blocks.cloud.image.setAttribute("visibility","visible");
-			message_blocks.cloud_right_up_arrow.image.setAttribute("visibility","visible");
+			message_draw.setx(jerry_x-board.block.width*2);
+		    message_draw.sety(jerry_y+board.block.height*2);
+			message_draw.cloud.image.setAttribute("visibility","visible");
+			message_draw.cloud_right_up_arrow.image.setAttribute("visibility","visible");
 		}
 	}
 	else if(jerry_x>board.block.width*48){
-		message_blocks.setx(jerry_x-board.block.width*2);
-	    message_blocks.sety(jerry_y-board.block.height*3);
-		message_blocks.cloud.image.setAttribute("visibility","visible");
-		message_blocks.cloud_right_arrow.image.setAttribute("visibility","visible");
+		message_draw.setx(jerry_x-board.block.width*2);
+	    message_draw.sety(jerry_y-board.block.height*3);
+		message_draw.cloud.image.setAttribute("visibility","visible");
+		message_draw.cloud_right_arrow.image.setAttribute("visibility","visible");
 	}else{
-		message_blocks.setx(jerry_x);
-	    message_blocks.sety(jerry_y - board.block.height*3);
-		message_blocks.cloud.image.setAttribute("visibility","visible");
-		message_blocks.cloud_left_arrow.image.setAttribute("visibility","visible");
+		message_draw.setx(jerry_x);
+	    message_draw.sety(jerry_y - board.block.height*3);
+		message_draw.cloud.image.setAttribute("visibility","visible");
+		message_draw.cloud_left_arrow.image.setAttribute("visibility","visible");
 	}
 }
 
 function hidden_message(){
-	message_blocks.cloud.image.setAttribute("visibility","hidden");
-	message_blocks.cloud_right_arrow.image.setAttribute("visibility","hidden");
-	message_blocks.cloud_left_arrow.image.setAttribute("visibility","hidden");
-	message_blocks.cloud_right_up_arrow.image.setAttribute("visibility","hidden");
-	message_blocks.cloud_left_up_arrow.image.setAttribute("visibility","hidden");
+	message_draw.cloud.image.setAttribute("visibility","hidden");
+	message_draw.cloud_right_arrow.image.setAttribute("visibility","hidden");
+	message_draw.cloud_left_arrow.image.setAttribute("visibility","hidden");
+	message_draw.cloud_right_up_arrow.image.setAttribute("visibility","hidden");
+	message_draw.cloud_left_up_arrow.image.setAttribute("visibility","hidden");
 	text.setAttribute("visibility","hidden");
 }
 
@@ -121,4 +121,11 @@ function text_box(){
 	svg.appendChild(text3);
 	svg.appendChild(text4);
 	l_message_cloud.appendChild(svg);
+}
+function draw(layer, type) {
+    this.image = document.getElementById(type).cloneNode(true);
+    this.image.id = "";
+    this.image.setAttribute("x",0);
+    this.image.setAttribute("y",0);
+    layer.appendChild(this.image);
 }
