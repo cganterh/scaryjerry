@@ -6,7 +6,7 @@ To do
     true en vez de false y viceversa.~~
 3.  ~~Hacer que jerry se mueva suavemente.~~
 4.  ~~Hacer que jerry no pueda salir del mapa.~~
-5.  (Cristóbal) Agregar música.
+5.  ~~Agregar música.~~
 6.  Crear funciones para modificar el mapa.
     a.  ~~Rectángulo.~~
     b.  Linea.
@@ -15,7 +15,7 @@ To do
 7.  (Nacho) Diseñar uno o dos mapas nuevos.
 8.  (Juan) Crear una burbuja de mensaje para que Jerry diga cosas.
 9.  ~~Hacer que Jerry reaccione a sus miedos.~~
-10. Crear un cuadro de diálogos.
+10. (Cristóbal) Crear un cuadro de diálogos.
 11. Derrotas
 12. Hacer que en el cuadro de diálogos se puedan seleccionar opciones.
 13. Hacer que Jerry pueda capturar las gemas.
