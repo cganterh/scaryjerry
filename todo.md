@@ -6,7 +6,7 @@ To do
     true en vez de false y viceversa.~~
 3.  ~~Hacer que jerry se mueva suavemente.~~
 4.  ~~Hacer que jerry no pueda salir del mapa.~~
-5.  Agregar música.
+5.  (Cristóbal) Agregar música.
 6.  Crear funciones para modificar el mapa.
     a.  ~~Rectángulo.~~
     b.  Linea.
