@@ -9,18 +9,18 @@ var jerry = {
     fears: {
         water: true,
         forest: true,
-        hills: true,
+        hill: true,
         lava: true,
         shadow: true,
         spider: true,
     },
 
-    animate: function (xfinal, yfinal) {
+    animate: function (final_pos) {
         var x = this.getx();
         var y = this.gety();
         
-        var dx = xfinal - x;
-        var dy = yfinal - y;
+        var dx = final_pos.x - x;
+        var dy = final_pos.y - y;
         
         this.moving = dx!=0 || dy!=0;
         
@@ -30,96 +30,90 @@ var jerry = {
             else if (dx <= -this.step)
                 this.setx(x-this.step);
             else
-                this.setx(xfinal);
+                this.setx(final_pos.x);
                 
             if (dy >= this.step)
                 this.sety(y+this.step);
             else if (dy <= -this.step)
                 this.sety(y-this.step);
             else
-                this.sety(yfinal);
+                this.sety(final_pos.y);
         }
         else
             window.clearInterval(this.moveInterval);
     },
 
     move: function (event) {
-        if (!this.moving) {
-            var x = this.getx();
-            var y = this.gety();
-            var self = this;
+        if (this.moving)
+            return;
             
-            switch(event.keyCode) {
-                case 37:
-                    if (this.scared((+x-50)/50.0,y/50.0)) {
-                        this.moving = true;
-                        this.moveInterval = window.setInterval(
-                            function () {self.animate(+x-50, y)},
-                            this.moveDelay);
-                    }
-                    else this.fear_globe();
-                    break;
-                    
-                case 38:
-                    if (this.scared(x/50.0,(+y-50)/50.0)) {
-                        this.moving = true;
-                        this.moveInterval = window.setInterval(
-                            function () {self.animate(x, +y-50)},
-                            this.moveDelay);
-                    }
-                    else this.fear_globe();
-                    break;
-                    
-                case 39:
-                    if (this.scared((+x+50)/50.0,y/50.0)) {
-                        this.moving = true;
-                        this.moveInterval = window.setInterval(
-                            function () {self.animate(+x+50, y)},
-                            this.moveDelay);
-                    }
-                    else this.fear_globe();
-                    break;
-                    
-                case 40:
-                    if (this.scared(x/50.0,(+y+50)/50.0)) {
-                        this.moving = true;
-                        this.moveInterval = window.setInterval(
-                            function () {self.animate(x, +y+50)},
-                            this.moveDelay);
-                    }
-                    else this.fear_globe();
-                    break;
-            }
+        var bx = board.to_block_x(this.getx());
+        var by = board.to_block_y(this.gety());
+        
+        switch(event.keyCode) {
+        case 37:
+            var pos = {x: bx-1, y: by};
+            this.test_and_move(pos);
+            break;
+            
+        case 38:
+            var pos = {x: bx, y: by-1};
+            this.test_and_move(pos);
+            break;
+            
+        case 39:
+            var pos = {x: bx+1, y: by};
+            this.test_and_move(pos);
+            break;
+            
+        case 40:
+            var pos = {x: bx, y: by+1};
+            this.test_and_move(pos);
+            break;
         }
     },
 
-    scared: function (x,y){
-        switch(board.blocks[x][y].type){
-            case("water"): if(this.fears.water) return false;
-                            else return true;
-            case("forest"): if(this.fears.forest) return false;
-                            else return true;
-            case("hills"): if(this.fears.hills) return false;
-                            else return true;
-            case("lava"): if(this.fears.lava) return false;
-                            else return true;
-            case("shadow"): if(this.fears.shadow) return false;
-                            else return true;
-            default: return true;
+    scared: function (pos) {
+        var block = board.blocks[pos.x][pos.y];
+        
+        if (block.hill && this.fears.hill)
+            return true;
+        
+        if (block.shadow && this.fears.shadow)
+            return true;
+    
+        switch (block.modifier) {
+            case("forest"):
+                if (this.fears.forest)
+                    return true;
         }
+    
+        switch (block.type) {
+            case("lava"):
+                if (this.fears.lava)
+                    return true;
+            case("water"):
+                if (this.fears.lava)
+                    return true;
+        }
+        
+        return false;
     },
     
-    setx: function (x) {
+    setx: function (x, set_layer) {
         this.image.setAttribute("x", +x);
+        this.conditioned_set_layer(set_layer);
     },
     
-    sety: function (y) {
+    sety: function (y, set_layer) {
         this.image.setAttribute("y", +y);
+        this.conditioned_set_layer(set_layer);
     },
     
-    set_pos: function (x, y) {
-        this.setx(x);
-        this.sety(y);
+    set_pos: function (x, y, set_layer) {
+        this.setx(x, false);
+        this.sety(y, false);
+        this.conditioned_set_layer(set_layer);
     },
     
     getx: function () {
@@ -135,5 +129,48 @@ var jerry = {
             x: this.getx(),
             y: this.gety(),
         }
+    },
+    
+    set_layer: function (layer) {
+        layer.appendChild(this.image);
+    },
+    
+    auto_set_layer: function () {        
+        var pos = this.get_pos();
+        
+        if (board.blocks[pos.x][pos.y].hill)
+            this.set_layer(l_hill_entities);
+        else
+            this.set_layer(l_ground_entities);
+    },
+    
+    conditioned_set_layer: function (set_layer) {
+        if ((set_layer === undefined || set_layer == true) &&
+            !this.moving)
+                this.auto_set_layer();
+    },
+    
+    test_and_move: function (pos) {
+        if (board.is_inside(pos)) {
+        
+            if (this.scared(pos))
+                this.fear_globe();
+                
+            else {
+                this.moving = true;
+                var self = this;
+                
+                var move_f = function () {
+                    self.animate(board.to_board_pos(pos))
+                };
+                
+                this.moveInterval = window.setInterval(move_f,
+                    this.moveDelay);
+            }
+        }
+    },
+    
+    fear_globe: function () {
+        //TODO: hacer que se muestre el globo.
     },
 }

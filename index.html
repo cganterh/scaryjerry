@@ -27,7 +27,7 @@
             <image id="grass"  xlink:href="art/grass.png"
                    width="50px" height="50px" />
                    
-            <image id="hills"  xlink:href="art/hills.png"
+            <image id="hill"  xlink:href="art/hill.png"
                    width="50px" height="69px" />
                    
             <image id="lava"   xlink:href="art/lava.png"
@@ -41,22 +41,28 @@
                    
             <image id="water"  xlink:href="art/water.png"
                    width="50px" height="50px" />
+
+            <image id="jerry" xlink:href="art/jerry.png"
+                   width="50px" height="50px">
         </svg>
         
         <svg id="game" width="800" height="600">
-            <g id="ground"></g>
+            <g id="l-ground"></g>
+            <g id="l-ground-modifier"></g>
+            <g id="l-ground-entities"></g>
+            <g id="l-ground-shadows"></g>
             
-            <g id="entities">
-                <image id="jerry" xlink:href="art/jerry.png"
-                       width="50px" height="50px">
-            </g>
-            
-            <g id="hills"></g>
-            <g id="hill-entities"></g>
-            <g id="shadows"></g>
+            <g id="l-hill"></g>
+            <g id="l-hill-ground"></g>
+            <g id="l-hill-modifier"></g>
+            <g id="l-hill-entities"></g>
+            <g id="l-hill-shadows"></g>
         </svg>
-        <script src="main.js"></script>
+        
+        <script src="layers.js"></script>
+        <script src="helpers.js"></script>
         <script src="block.js"></script>
+        <script src="board.js"></script>
 		<script src="map_functions.js"></script>
         <script src="jerry.js"></script>
         <script src="map.js"></script>
