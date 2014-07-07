@@ -171,6 +171,6 @@ var jerry = {
     },
     
     fear_globe: function () {
-        //TODO: hacer que se muestre el globo.
+        message("mensaje");
     },
 }
