@@ -171,6 +171,8 @@ var jerry = {
     },
     
     fear_globe: function () {
-        message("mensaje");
+        show_message({l1: "Que miedo!", 
+                      l2: "No puedo ir ahí!",});
+        window.setTimeout(hide_message, 2000);
     },
 }

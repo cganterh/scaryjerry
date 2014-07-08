@@ -28,8 +28,12 @@ var bubble = {
 	setx: function (x) {
 	    var bw = board.block.width;
 	    
-	    this.cloud.setAttribute("x", +x);
-	    this.text.setAttribute("x", +x);
+	    this.cloud.setAttribute("x", x);
+	    this.text.setAttribute("x", x);
+	    this.line1.setAttribute("x", x);
+	    this.line2.setAttribute("x", x);
+	    this.line3.setAttribute("x", x);
+	    this.line4.setAttribute("x", x);
 	    this.cloud_right_arrow.translate({x: bw+x});
 	    this.cloud_left_arrow.translate({x: bw+x});
 	    this.cloud_right_up_arrow.translate({x: bw+x});
@@ -57,7 +61,9 @@ bubble.cloud_left_arrow.translate = translate;
 bubble.cloud_right_up_arrow.translate = translate;
 bubble.cloud_left_up_arrow.translate = translate;
 
-function message(current_message){
+function show_message(message){
+    var message = message || {};
+
     bubble.cloud_right_arrow.setAttribute("visibility", "hidden");
     bubble.cloud_left_arrow.setAttribute("visibility", "hidden");
     bubble.cloud_right_up_arrow.setAttribute("visibility", "hidden");
@@ -65,10 +71,10 @@ function message(current_message){
     
 	l_message_cloud.setAttribute("visibility", "visible");
 	
-	bubble.line1.textContent = current_message.slice(0,  20);
-	bubble.line2.textContent = current_message.slice(20, 40);
-	bubble.line3.textContent = current_message.slice(40, 60);
-	bubble.line4.textContent = current_message.slice(60, 80);
+	bubble.line1.textContent = message.l1 || " ";
+	bubble.line2.textContent = message.l2 || " ";
+	bubble.line3.textContent = message.l3 || " ";
+	bubble.line4.textContent = message.l4 || " ";
 	
 	var jerry_x = jerry.getx();
 	var jerry_y = jerry.gety();
@@ -79,17 +85,17 @@ function message(current_message){
 			bubble.setx(jerry_x);
 		    bubble.sety(jerry_y + board.block.height*2);
 			bubble.cloud.setAttribute("visibility",
-			    "visible");
+			    "inherited");
 			bubble.cloud_left_up_arrow.setAttribute(
-			    "visibility", "visible");
+			    "visibility", "inherited");
 		}
 		else { // Jerry en la parte superior de la pantalla
 			bubble.setx(jerry_x - board.block.width*2);
 		    bubble.sety(jerry_y + board.block.height*2);
 			bubble.cloud.setAttribute("visibility",
-			    "visible");
+			    "inherited");
 			bubble.cloud_right_up_arrow.setAttribute(
-			    "visibility","visible");
+			    "visibility","inherited");
 		}
 	}
 	else if (jerry_x > board.block.width*48) {

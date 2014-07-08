@@ -13,7 +13,7 @@ To do
     c.  Círculo.
 
 7.  (Nacho) Diseñar uno o dos mapas nuevos.
-8.  (Juan) Crear una burbuja de mensaje para que Jerry diga cosas.
+8.  ~~Crear una burbuja de mensaje para que Jerry diga cosas.~~
 9.  ~~Hacer que Jerry reaccione a sus miedos.~~
 10. (Cristóbal) Crear un cuadro de diálogos.
 11. Derrotas
