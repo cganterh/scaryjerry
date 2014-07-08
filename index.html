@@ -17,10 +17,6 @@
                 display: none;
             }
             
-            #bubble-parts {
-                display: none;
-            }
-            
             #mute {
                 float: left;
             }
@@ -74,30 +70,6 @@
             <image id="jerry" xlink:href="art/jerry.png"
                    width="50px" height="50px">
         </svg>
-        
-        <svg id="bubble-parts">
-            <rect id="cloud" rx="20" ry="20" width="150px"
-                  height="100px" fill="white" stroke="grey"
-                  stroke-width="3" opacity="0.6" />
-
-            <polygon id="cloud-right-arrow" points="0 0, 50 40, 30 0"
-                     fill="white" stroke="grey" stroke-width="3"
-                     fill-rule="evenodd" opacity="0.6" />
-
-            <polygon id="cloud-left-arrow" points="20 0, 0 40, 50 0"
-                     fill="white" stroke="grey" stroke-width="3"
-                     fill-rule="evenodd" opacity="0.6" />
-
-            <polygon id="cloud-right-up-arrow"
-                     points="0 50, 40 0, 30 50" fill="white"
-                     stroke="grey" stroke-width="3"
-                     fill-rule="evenodd" opacity="0.6" />
-
-            <polygon id="cloud-left-up-arrow"
-                     points="0 0, 20 50, 50 50" fill="white"
-                     stroke="grey" stroke-width="3"
-                     fill-rule="evenodd" opacity="0.6" />
-        </svg>
 
         <svg id="game" width="800" height="600">
             <g id="l-ground"></g>
@@ -110,7 +82,39 @@
             <g id="l-hill-modifier"></g>
             <g id="l-hill-entities"></g>
             <g id="l-hill-shadows"></g>
-            <g id="l-message-cloud"></g>
+            
+            <g id="l-message-cloud" visibility="hidden">
+                <polygon id="cloud-right-arrow"
+                         points="0,0 50,40 30,0" fill="white"
+                         stroke="grey" stroke-width="3"
+                         opacity="0.6" />
+
+                <polygon id="cloud-left-arrow"
+                         points="20,0 0,40 50,0" fill="white"
+                         stroke="grey" stroke-width="3"
+                         opacity="0.6" />
+
+                <polygon id="cloud-right-up-arrow"
+                         points="0,50 40,0 30,50" fill="white"
+                         stroke="grey" stroke-width="3"
+                         opacity="0.6" />
+
+                <polygon id="cloud-left-up-arrow"
+                         points="0,0 20,50 50,50" fill="white"
+                         stroke="grey" stroke-width="3"
+                         opacity="0.6" />
+                  
+                <rect id="cloud" rx="20" ry="20" width="150px"
+                      height="100px" fill="white" stroke="grey"
+                      stroke-width="3" opacity="0.6" />
+                         
+                <text id="bubble-text">
+                    <tspan id="line1"></text>
+                    <tspan id="line2"></text>
+                    <tspan id="line3"></text>
+                    <tspan id="line4"></text>
+                </text>
+            </g>
             
             <g id="dialog">
                 <rect x="50" y="50" rx="20" ry="20" width="700"
@@ -123,10 +127,10 @@
         <script src="helpers.js"></script>
         <script src="block.js"></script>
         <script src="board.js"></script>
+        <script src="message.js"></script>
 		<script src="map_functions.js"></script>
         <script src="jerry.js"></script>
         <script src="map.js"></script>
-        <script src="message.js"></script>
         <script src="music.js"></script>
     </body>
 </html>
