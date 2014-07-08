@@ -15,10 +15,11 @@ To do
 7.  (Nacho) Diseñar uno o dos mapas nuevos.
 8.  ~~Crear una burbuja de mensaje para que Jerry diga cosas.~~
 9.  ~~Hacer que Jerry reaccione a sus miedos.~~
-10. (Cristóbal) Crear un cuadro de diálogos.
+10. ~~Crear un cuadro de diálogos.~~
 11. Derrotas
-12. Hacer que en el cuadro de diálogos se puedan seleccionar opciones.
-13. Hacer que Jerry pueda capturar las gemas.
+12. ~~Hacer que en el cuadro de diálogos se puedan seleccionar
+    opciones.~~
+13. ~~Hacer que Jerry pueda capturar las gemas.~~
 14. Victoria
 15. Crear las arañas.
 16. Arreglar los hills para que se pongan desfazados en y.

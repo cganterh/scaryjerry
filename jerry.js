@@ -93,7 +93,7 @@ var jerry = {
                 if (this.fears.lava)
                     return true;
             case("water"):
-                if (this.fears.lava)
+                if (this.fears.water)
                     return true;
         }
         
@@ -166,6 +166,11 @@ var jerry = {
                 
                 this.moveInterval = window.setInterval(move_f,
                     this.moveDelay);
+
+                if (board.blocks[pos.x][pos.y].gem) {
+                    this.gem_event();
+                    board.blocks[pos.x][pos.y].remove_gem();
+                }
             }
         }
     },

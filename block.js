@@ -12,6 +12,7 @@ Block.prototype.set = function (options) {
     this.type = options.type || (this.hill ? null : "grass");
     this.modifier = options.modifier || null;
     this.shadow = options.shadow || false;
+    this.gem = options.gem || false;
     
     this.clear();
 
@@ -22,12 +23,14 @@ Block.prototype.set = function (options) {
         this.img_hill = load_image('hill', this.x, this.y, l_hill);
         ground_layer = l_hill_ground;
         modifier_layer = l_hill_modifier;
+        entities_layer = l_hill_entities;
         shadows_layer = l_hill_shadows;
     }
     else {
         this.img_hill = null;
         ground_layer = l_ground;
         modifier_layer = l_ground_modifier;
+        entities_layer = l_ground_entities;
         shadows_layer = l_ground_shadows;
     }
   
@@ -50,6 +53,12 @@ Block.prototype.set = function (options) {
                                      shadows_layer);
     else
         this.img_shadow = null;
+    
+    if (this.gem)
+        this.img_gem = load_image("gem", this.x, this.y,
+                                  entities_layer);
+    else
+        this.img_gem = null;
 }
 
 Block.prototype.clear = function () {
@@ -57,9 +66,16 @@ Block.prototype.clear = function () {
     remove_from_dom(this.img_ground);
     remove_from_dom(this.img_modifier);
     remove_from_dom(this.img_shadow);
+    remove_from_dom(this.img_gem);
     
     this.img_hill = null;
     this.img_ground = null;
     this.img_modifier = null;
     this.img_shadow = null;
+    this.img_gem = null;
+}
+
+Block.prototype.remove_gem = function () {
+    remove_from_dom(this.img_gem);
+    this.img_gem = null;
 }

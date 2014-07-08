@@ -102,17 +102,17 @@ function show_message(message){
 		bubble.setx(jerry_x - board.block.width*2);
 	    bubble.sety(jerry_y - board.block.height*3);
 		bubble.cloud.setAttribute("visibility",
-		    "visible");
+		    "inherited");
 		bubble.cloud_right_arrow.setAttribute(
-		    "visibility","visible");
+		    "visibility","inherited");
 	}
 	else {
 		bubble.setx(jerry_x);
 	    bubble.sety(jerry_y - board.block.height*3);
 		bubble.cloud.setAttribute("visibility",
-		    "visible");
+		    "inherited");
 		bubble.cloud_left_arrow.setAttribute("visibility",
-		    "visible");
+		    "inherited");
 	}
 }
 

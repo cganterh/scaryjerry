@@ -13,7 +13,7 @@
                 text-align: center;
             }
             
-            #images {
+            #ui-objects {
                 display: none;
             }
             
@@ -42,7 +42,7 @@
             </label>
         </div>
         
-        <svg id="images">
+        <svg id="ui-objects">
             <image id="forest" xlink:href="art/forest.png"
                    width="50px" height="50px" />
                    
@@ -68,7 +68,17 @@
                    width="50px" height="50px" />
 
             <image id="jerry" xlink:href="art/jerry.png"
-                   width="50px" height="50px">
+                   width="50px" height="50px" />
+            
+            <g id="dialog-button-model" class="dialog-button"
+               cursor="pointer">
+                <rect x=100 y=100 rx="10" ry="10" width="300"
+                      height="30" fill="#eee" stroke="#999"
+                      stroke-width="2px" opacity="0.9" />
+                <text x=250 y=120 font-size="16"
+                      font-family="sans-serif"
+                      text-anchor="middle"></text>
+            </g>
         </svg>
 
         <svg id="game" width="800" height="600">
@@ -116,10 +126,14 @@
                 </text>
             </g>
             
-            <g id="dialog">
+            <g id="dialog" visibility="hidden">
                 <rect x="50" y="50" rx="20" ry="20" width="700"
                       height="500" fill="#eee" stroke="#999"
                       stroke-width="2px" opacity="0.9" />
+                <text id="dialog-title" x=400 y=90 font-size="20"
+                      font-family="sans-serif" text-anchor="middle">
+                    Elige cual miedo deseas superar:
+                </text>
             </g>
         </svg>
         
@@ -130,6 +144,7 @@
         <script src="message.js"></script>
 		<script src="map_functions.js"></script>
         <script src="jerry.js"></script>
+        <script src="dialog.js"></script>
         <script src="map.js"></script>
         <script src="music.js"></script>
     </body>
