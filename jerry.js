@@ -168,7 +168,9 @@ var jerry = {
                     this.moveDelay);
 
                 if (board.blocks[pos.x][pos.y].gem) {
-                    this.gem_event();
+		    board.gems -= 1;
+		    if (board.gems == 0) alert("Victoria");
+		    else this.gem_event();
                     board.blocks[pos.x][pos.y].remove_gem();
                 }
             }
@@ -176,8 +178,8 @@ var jerry = {
     },
     
     fear_globe: function () {
-        show_message({l1: "Que miedo!", 
-                      l2: "No puedo ir ahí!",});
+        show_message({l1: "¡Que miedo!", 
+                      l2: "¡No puedo ir ahí!",});
         window.setTimeout(hide_message, 2000);
     },
 }

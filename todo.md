@@ -12,7 +12,7 @@ hacer deberías liberarla.**
 4.  Diseñar uno o dos mapas nuevos.
 5.  (Nacho) Derrotas.
 6.  Hacer que la lava mate.
-7.  Victoria.
+7.  (Nacho) Victoria.
 8.  (Nacho) Crear las arañas.
 9.  Crear funciones para modificar el mapa: Linea.
 10. Crear funciones para modificar el mapa: Círculo.
