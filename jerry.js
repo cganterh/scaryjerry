@@ -136,7 +136,7 @@ var jerry = {
     },
     
     auto_set_layer: function () {        
-        var pos = this.get_pos();
+        var pos = board.to_block_pos(this.get_pos());
         
         if (board.blocks[pos.x][pos.y].hill)
             this.set_layer(l_hill_entities);
