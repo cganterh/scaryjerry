@@ -10,7 +10,7 @@ desarrollarla.
 3.  **Arreglar el bug que hace que Jerry no se suba a los hills.**
 4.  Diseñar uno o dos mapas nuevos.
 5.  (Nacho) Derrotas.
-6.  Hacer que la lava mate.
+6.  (Nacho) Hacer que la lava mate.
 7.  (Nacho) Victoria.
 8.  (Nacho) Crear las arañas.
 9.  Crear funciones para modificar el mapa: Linea.
