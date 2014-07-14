@@ -2,7 +2,10 @@ var jerry = {
     step: 3,
     moveDelay: 12,
     moving: false,
+	playing: true,
     moveInterval: null,
+	width: 50,
+	height: 50,
     
     image: document.getElementById("jerry"),
     
@@ -39,12 +42,14 @@ var jerry = {
             else
                 this.sety(final_pos.y);
         }
-        else
+        else{
+			if (board.blocks[jerry.getx()/50][jerry.gety()/50].type == "lava") jerry.defeat();
             window.clearInterval(this.moveInterval);
+		}
     },
 
     move: function (event) {
-        if (this.moving)
+        if (this.moving || !this.playing)
             return;
             
         var bx = board.to_block_x(this.getx());
@@ -168,18 +173,40 @@ var jerry = {
                     this.moveDelay);
 
                 if (board.blocks[pos.x][pos.y].gem) {
-		    board.gems -= 1;
-		    if (board.gems == 0) alert("Victoria");
-		    else this.gem_event();
+					board.gems -= 1;
+					if (board.gems == 0) this.victory();
+					else this.gem_event();
                     board.blocks[pos.x][pos.y].remove_gem();
                 }
             }
         }
     },
-    
+	
     fear_globe: function () {
         show_message({l1: "¡Que miedo!", 
                       l2: "¡No puedo ir ahí!",});
         window.setTimeout(hide_message, 2000);
     },
+	
+	defeat: function () {
+		// Cambiar esto por algo bonito como lo de los miedos sin botones
+		alert("Defeat");
+		this.moving = false;
+		this.playing = false;
+		for(i = 0; i < spiders.length; i++){
+			window.clearInterval(spiders[i].timer);
+		}
+		window.clearInterval(timer_colision);
+	},
+	
+	victory: function () {
+		// Cambiar esto por algo bonito como lo de los miedos sin botones
+		alert("Victory");
+		this.moving = false;
+		this.playing = false;
+		for(i = 0; i < spiders.length; i++){
+			window.clearInterval(spiders[i].timer);
+		}
+		window.clearInterval(timer_colision);
+	},
 }

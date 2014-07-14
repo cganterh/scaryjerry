@@ -11,7 +11,7 @@ rectangle(14, 16,  1,  5, {modifier: "forest"});
 rectangle(12, 14,  1,  5, {shadow: true, modifier: "forest"});
 rectangle( 9, 12,  7, 12, {hill: true});
 rectangle(12, 16,  8, 11, {type: "lava"});
-board.blocks[3][3].set({gem: true});
+board.blocks[4][11].set({gem: true});
 board.blocks[15][0].set({gem: true});
 board.blocks[15][11].set({gem: true});
 board.blocks[6][8].set({type: "water", gem: true});
@@ -19,14 +19,15 @@ board.gems = 4;
 
 jerry.set_pos(0, 0);
 
-var spider1 = new spider("spider1");
-spider1.set_pos(50, 50, ["d","u"]);
+var spiders = new Array();
+spiders.push(new spider("spider1"));
+spiders[0].set_pos(50, 450, ["l","r"]);
 
-var spider2 = new spider("spider2");
-spider2.set_pos(200, 200, ["l","r"]);
+spiders.push(new spider("spider2"));
+spiders[1].set_pos(100, 150, ["l","r"]);
 
-var spider3 = new spider("spider3");
-spider3.set_pos(300, 300, ["d","r","u","l"]);
+spiders.push(new spider("spider3"));
+spiders[2].set_pos(250, 350, ["d","d","r","r","u","u","l","l"]);
 
-var spider4 = new spider("spider4");
-spider4.set_pos(400, 400, ["r","d","l","u"]);
+spiders.push(new spider("spider4"));
+spiders[3].set_pos(400, 400, ["r","d","l","u"]);

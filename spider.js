@@ -5,7 +5,9 @@ function spider(image){
     this.moveInterval = null;
     this.movement_list = null;
     this.iterator = 0;
-    this.movement_delay = 500;
+	this.width = 50;
+	this.height = 50;
+    this.movement_delay = 1000;
     this.image = document.getElementById(image);
 
     this.iterate_movement = function (){
@@ -80,7 +82,7 @@ function spider(image){
         this.sety(y, false);
         this.movement_list = movement_list;
         this.conditioned_set_layer(set_layer);
-        window.setInterval(function(){this.iterate_movement()}.bind(this), this.movement_delay);
+        this.timer = setInterval(function(){this.iterate_movement()}.bind(this), this.movement_delay);
     };
     
     this.getx = function () {
@@ -131,4 +133,9 @@ function spider(image){
 
         }
     };
+	
+	this.die = function () {
+		clearInterval(this.timer);
+		remove_from_dom(this.image);
+	};
 };

@@ -77,5 +77,6 @@ Block.prototype.clear = function () {
 
 Block.prototype.remove_gem = function () {
     remove_from_dom(this.img_gem);
+	this.set({type: this.type, gem: false});
     this.img_gem = null;
 }
