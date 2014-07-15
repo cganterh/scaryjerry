@@ -43,7 +43,7 @@ var jerry = {
                 this.sety(final_pos.y);
         }
         else{
-			if (board.blocks[jerry.getx()/50][jerry.gety()/50].type == "lava") jerry.defeat();
+			if (board.blocks[jerry.getx()/50][jerry.gety()/50].type == "lava") jerry.defeat("lava");
             window.clearInterval(this.moveInterval);
 		}
     },
@@ -188,9 +188,9 @@ var jerry = {
         window.setTimeout(hide_message, 2000);
     },
 	
-	defeat: function () {
-		// Cambiar esto por algo bonito como lo de los miedos sin botones
-		alert("Defeat");
+	defeat: function (type) {
+		var dialog = document.getElementById("defeat-"+type);
+		dialog.setAttribute("visibility", "visible");
 		this.moving = false;
 		this.playing = false;
 		for(i = 0; i < spiders.length; i++){
@@ -200,8 +200,8 @@ var jerry = {
 	},
 	
 	victory: function () {
-		// Cambiar esto por algo bonito como lo de los miedos sin botones
-		alert("Victory");
+		var dialog = document.getElementById("victory");
+		dialog.setAttribute("visibility", "visible");
 		this.moving = false;
 		this.playing = false;
 		for(i = 0; i < spiders.length; i++){

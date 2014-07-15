@@ -28,7 +28,7 @@
     </head>
     <body onKeyDown="jerry.move(event)">
         <audio id="music" autoplay loop>
-            <source src="music/Pt ibec_-_Medieval.mp3"
+            <source src="music/Ptibec_-_Medieval.mp3"
                     type="audio/mp3">
         </audio>
         
@@ -147,6 +147,33 @@
                 <text id="dialog-title" x=400 y=90 font-size="20"
                       font-family="sans-serif" text-anchor="middle">
                     Elige cual miedo deseas superar:
+                </text>
+            </g>
+	    <g id="victory" visibility="hidden">
+                <rect x="50" y="50" rx="20" ry="20" width="700"
+                      height="250" fill="#eee" stroke="#999"
+                      stroke-width="2px" opacity="0.9" />
+                <text id="dialog-title" x=400 y=90 font-size="20"
+                      font-family="sans-serif" text-anchor="middle">
+                    ¡Has conseguido todas las gemas y conseguido la victoria!
+                </text>
+            </g>
+	    <g id="defeat-spider" visibility="hidden">
+                <rect x="50" y="50" rx="20" ry="20" width="700"
+                      height="250" fill="#eee" stroke="#999"
+                      stroke-width="2px" opacity="0.9" />
+                <text id="dialog-title" x=400 y=90 font-size="20"
+                      font-family="sans-serif" text-anchor="middle">
+                    Has sido derrotado por tus mayores temores.
+                </text>
+            </g>
+	    <g id="defeat-lava" visibility="hidden">
+                <rect x="50" y="50" rx="20" ry="20" width="700"
+                      height="250" fill="#eee" stroke="#999"
+                      stroke-width="2px" opacity="0.9" />
+                <text id="dialog-title" x=400 y=90 font-size="20"
+                      font-family="sans-serif" text-anchor="middle">
+                    ¡Moriste calcinado! ¿Por qué te arrojaste a la lava?
                 </text>
             </g>
         </svg>

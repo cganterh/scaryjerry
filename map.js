@@ -15,7 +15,8 @@ board.blocks[4][11].set({gem: true});
 board.blocks[15][0].set({gem: true});
 board.blocks[15][11].set({gem: true});
 board.blocks[6][8].set({type: "water", gem: true});
-board.gems = 4;
+board.blocks[9][4].set({gem: true});
+board.gems = 5;
 
 jerry.set_pos(0, 0);
 
@@ -24,10 +25,10 @@ spiders.push(new spider("spider1"));
 spiders[0].set_pos(50, 450, ["l","r"]);
 
 spiders.push(new spider("spider2"));
-spiders[1].set_pos(100, 150, ["l","r"]);
+spiders[1].set_pos(100, 150, ["l","l","r","r"]);
 
 spiders.push(new spider("spider3"));
 spiders[2].set_pos(250, 350, ["d","d","r","r","u","u","l","l"]);
 
 spiders.push(new spider("spider4"));
-spiders[3].set_pos(400, 400, ["r","d","l","u"]);
+spiders[3].set_pos(400, 150, ["d","d","r","r","u","u","l","l"]);
